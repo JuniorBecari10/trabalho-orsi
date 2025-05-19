@@ -56,5 +56,6 @@ public class ContratoVenda extends Contrato {
         corretor.setValorComissaoRecebida(valorLiquido);
 
         // calcula o valor de participação de venda de cada proprietário.
+        // TODO
     }
 }
