@@ -47,8 +47,14 @@ public class ContratoVenda extends Contrato {
     }
     
     public void processarMensalidade() {
-        double comissaoCorretor = corretor.getValorComissaoRecebida();
+        double comissaoCorretor = percentualCorretor;
         double comissaoImobiliaria = percentualImobiliaria;
+
         double valorLiquido = getValorPrincipal() - comissaoCorretor - comissaoImobiliaria;
+
+        // adiciona a comissão para o corretor.
+        corretor.setValorComissaoRecebida(valorLiquido);
+
+        // calcula o valor de participação de venda de cada proprietário.
     }
 }
