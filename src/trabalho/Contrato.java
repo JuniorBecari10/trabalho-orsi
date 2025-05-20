@@ -36,7 +36,9 @@ public abstract class Contrato {
     }
     
     public void mostraDados() {
-        System.out.println("Imovel: " + imovel);
+        System.out.println("Imovel:");
+        imovel.mostraDados();
+        
         System.out.println("Data Inicio: " + dataInicio);
         System.out.println("Valor Principal: " + valorPrincipal);
     }

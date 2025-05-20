@@ -8,12 +8,14 @@ public class Proprietario extends Pessoa{
     }   
 
     public void incluiImovel(Imovel imo) {
+        // Verifica se há no vetor outro imóvel com o mesmo idImovel.
         for (Imovel i: imoveis) {
             if (i != null && i.getIdImovel() == imo.getIdImovel())
                 return;
         }
 
-        for (int i = 0;i < imoveis.length; i++) {
+        // Não há. Podemos adicionar na primeira posição livre.
+        for (int i = 0; i < imoveis.length; i++) {
             if (imoveis[i] == null) {
                imoveis[i] = imo;
                return;

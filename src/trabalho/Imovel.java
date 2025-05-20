@@ -1,12 +1,12 @@
 package trabalho;
 
-public abstract class Imovel{
+public abstract class Imovel {
     private int idImovel;
     private String endereco;
     private double valorBaseLocacao;
     private double valorBaseVenda;
     private double iptu;
-    ParticipacaoProprietario proprietario[] = new ParticipacaoProprietario[10];
+    ParticipacaoProprietario[] participacoes = new ParticipacaoProprietario[10];
 
     public Imovel(int idImovel, String endereco, double valorBaseLocacao, double valorBaseVenda, double iptu) {
         this.idImovel = idImovel;
@@ -23,7 +23,6 @@ public abstract class Imovel{
     public void setIdImovel(int idImovel) {
         this.idImovel = idImovel;
     }
-    
     
     public String getEndereco() {
         return endereco;
@@ -50,11 +49,11 @@ public abstract class Imovel{
     }
 
     public ParticipacaoProprietario[] getProprietario() {
-        return proprietario;
+        return participacoes;
     }
 
     public void setProprietario(ParticipacaoProprietario[] proprietario) {
-        this.proprietario = proprietario;
+        this.participacoes = proprietario;
     }
 
     public double getValorBaseLocacao() {
@@ -67,26 +66,28 @@ public abstract class Imovel{
     
     
     public void incluiParticipacaoPropretario(Proprietario prop, double percentual) {
-        for (int i = 0; i < proprietario.length; i++) {
-             if (proprietario[i] == null) {
-                 ParticipacaoProprietario  propretario = new ParticipacaoProprietario(prop, percentual);
-                 proprietario[i] = propretario;
+        for (int i = 0; i < participacoes.length; i++) {
+             if (participacoes[i] == null) {
+                 ParticipacaoProprietario part = new ParticipacaoProprietario(prop, percentual);
+                 participacoes[i] = part;
+                 
                  return;
              }
         }
     }
     
     public void excluiParticipacaoProprietario(Proprietario prop) {
-        for (int i = 0; i < proprietario.length ; i++) {
-             if (proprietario[i] != null && proprietario[i].getProprietario() == prop) {
-                 proprietario[i] = null;
+        for (int i = 0; i < participacoes.length ; i++) {
+             if (participacoes[i] != null && participacoes[i].getProprietario() == prop) {
+                 participacoes[i] = null;
+                 
                  return;
              }
         }
     }
    
     public void listarParticipacaoProprietario() {
-        for (ParticipacaoProprietario p: proprietario)
+        for (ParticipacaoProprietario p: participacoes)
             p.mostraDados();
     }
     
@@ -96,7 +97,8 @@ public abstract class Imovel{
         System.out.println("Valor base locacao: " + valorBaseLocacao);
         System.out.println("Valor base venda: " + valorBaseVenda);
         System.out.println("Iptu: " + iptu);
-
+        System.out.println("Participacoes dos proprietarios:");
+        
         listarParticipacaoProprietario();
     }
     

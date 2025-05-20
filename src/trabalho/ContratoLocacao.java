@@ -87,15 +87,30 @@ public class ContratoLocacao extends Contrato {
         encerrado = true;
 
         if (vistoriaAprovada)
-            System.out.println("Vistoria Aprovada. Contrato encerrado");
+            System.out.println("Vistoria aprovada. Contrato encerrado");
         else
-            System.out.println("Vistoria Reprovada!! Inquilino deve realizar os reparos.");
+            System.out.println("Vistoria reprovada! Inquilino deve realizar os reparos.");
     }
     
     public void processarMensalidade() {
         if (encerrado)
             return;
 
-        double valorAluguel = getValorPrincipal() + getIptu();
+        Imovel imovel = getImovel();
+        double valorAluguel = getValorPrincipal() + imovel.getIptu();
+        
+        double taxaAdministracao = imovel.calcularTaxaAdministracao();
+        double valorLiquido = getValorPrincipal() - taxaAdministracao;
+        
+        System.out.println("Valor do aluguel: " + valorAluguel);
+        System.out.println("Taxa de administração: " + taxaAdministracao);
+        System.out.println("Valor líquido: " + valorLiquido);
+        
+        for (ParticipacaoProprietario p: imovel.participacoes) {
+            if (p != null) {
+                double valorParticipacao = valorLiquido * p.getPercentual();
+                System.out.println("Valor de participação (" + p.getProprietario().getNome() + "): " + valorParticipacao);
+            }
+        }
     }
 }

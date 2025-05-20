@@ -3,7 +3,7 @@ package trabalho;
 public class Corretor extends Pessoa {
     private double valorComissaoRecebida;
 
-    public Corretor(double valorComissaoRecebida, String nome, String cpf, String endereco) {
+    public Corretor(String nome, String cpf, String endereco, double valorComissaoRecebida) {
         super(nome, cpf, endereco);
         this.valorComissaoRecebida = valorComissaoRecebida;
     }

@@ -6,8 +6,9 @@ public class ContratoVenda extends Contrato {
     private double percentualImobiliaria;
     private double percentualCorretor;
 
-    public ContratoVenda(Pessoa comprador, Corretor corretor, double percentualImobiliaria, double percentualCorretor, Imovel imovel, String dataInicio, double valorPrincipal) {
+    public ContratoVenda(Imovel imovel, String dataInicio, double valorPrincipal, Pessoa comprador, Corretor corretor, double percentualImobiliaria, double percentualCorretor) {
         super(imovel, dataInicio, valorPrincipal);
+        
         this.comprador = comprador;
         this.corretor = corretor;
         this.percentualImobiliaria = percentualImobiliaria;
@@ -49,13 +50,17 @@ public class ContratoVenda extends Contrato {
     public void processarMensalidade() {
         double comissaoCorretor = percentualCorretor;
         double comissaoImobiliaria = percentualImobiliaria;
-
         double valorLiquido = getValorPrincipal() - comissaoCorretor - comissaoImobiliaria;
-
-        // adiciona a comissão para o corretor.
+        
         corretor.setValorComissaoRecebida(valorLiquido);
 
-        // calcula o valor de participação de venda de cada proprietário.
-        // TODO
+        Imovel imovel = getImovel();
+        
+        for (ParticipacaoProprietario p: imovel.participacoes) {
+            if (p != null) {
+                double valorParticipacao = valorLiquido * p.getPercentual();
+                System.out.println("Valor de participação (" + p.getProprietario().getNome() + "): " + valorParticipacao);
+            }
+        }
     }
 }
