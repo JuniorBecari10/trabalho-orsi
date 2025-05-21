@@ -1,3 +1,6 @@
+// Antônio Carlos Becari Júnior
+// Thiago Obana
+
 package trabalho;
 
 import java.util.ArrayList;
