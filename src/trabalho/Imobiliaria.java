@@ -26,8 +26,13 @@ public class Imobiliaria {
             pessoa.mostraDados();
     }
 
-    public Pessoa pegarPessoa(int indice) {
-        return pessoas.get(indice);
+    public Pessoa pegarPessoa(Pessoa pessoa) {
+        for (Pessoa p: pessoas) {
+            if (p.equals(pessoa))
+                return p;
+        }
+        
+        return null;
     }
 
     public void incluirImovel(Imovel imovel) {
@@ -43,8 +48,13 @@ public class Imobiliaria {
             imovel.mostraDados();
     }
 
-    public Imovel pegarImovel(int indice) {
-        return imoveis.get(indice);
+    public Imovel pegarImovel(Imovel imovel) {
+        for (Imovel i: imoveis) {
+            if (i.equals(imovel))
+                return i;
+        }
+        
+        return null;
     }
 
     public void incluirContrato(Contrato contrato) {
@@ -60,11 +70,17 @@ public class Imobiliaria {
             contrato.mostraDados();
     }
 
-    public Contrato pegarContrato(int indice) {
-        return contratos.get(indice);
+    public Contrato pegarContrato(Contrato contrato) {
+        for (Contrato c: contratos) {
+            if (c.equals(contrato))
+                return c;
+        }
+        
+        return null;
     }
 
     public void processarMensalidades() {
-        contrato.processarMensalidade();
+        for (Contrato contrato: contratos)
+            contrato.processarMensalidade();
     }
 }

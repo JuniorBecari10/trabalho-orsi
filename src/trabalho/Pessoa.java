@@ -38,6 +38,6 @@ public abstract class Pessoa {
     public void mostraDados() {
         System.out.println("Nome: " + nome);
         System.out.println("CPF: " + cpf);
-        System.out.println("Endereco: " + endereco);
+        System.out.println("Endereço: " + endereco);
     }
 }

@@ -36,10 +36,10 @@ public abstract class Contrato {
     }
     
     public void mostraDados() {
-        System.out.println("Imovel:");
+        System.out.println("Imóvel:");
         imovel.mostraDados();
         
-        System.out.println("Data Inicio: " + dataInicio);
+        System.out.println("Data Início: " + dataInicio);
         System.out.println("Valor Principal: " + valorPrincipal);
     }
     

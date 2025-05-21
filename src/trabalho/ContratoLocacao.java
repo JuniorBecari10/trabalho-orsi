@@ -79,7 +79,9 @@ public class ContratoLocacao extends Contrato {
     
     public void registrarAtraso() {
         atraso = true;
-        devServ.adicionarDevedor(locatario, getValorPrincipal() + multaAtraso);
+        
+        Devedor devedor = new Devedor(locatario, getValorPrincipal() + multaAtraso);
+        devServ.incluirDevedor(devedor);
     }
             
     public void encerrarComVistoria(boolean vistoriaAprovada) {
@@ -87,11 +89,12 @@ public class ContratoLocacao extends Contrato {
         encerrado = true;
 
         if (vistoriaAprovada)
-            System.out.println("Vistoria aprovada. Contrato encerrado");
+            System.out.println("Vistoria aprovada. Contrato encerrado.");
         else
             System.out.println("Vistoria reprovada! Inquilino deve realizar os reparos.");
     }
     
+    @Override
     public void processarMensalidade() {
         if (encerrado)
             return;

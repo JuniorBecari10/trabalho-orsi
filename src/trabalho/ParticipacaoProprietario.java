@@ -26,7 +26,9 @@ class ParticipacaoProprietario {
     }    
     
     public void mostraDados() {
-        System.out.println("Propretario: " + proprietario);
+        System.out.println("Propretário:");
+        proprietario.mostraDados();
+        
         System.out.println("Percentual: " + percentual);
     }
 }

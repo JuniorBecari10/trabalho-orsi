@@ -47,6 +47,7 @@ public class ContratoVenda extends Contrato {
         this.percentualCorretor = percentualCorretor;
     }
     
+    @Override
     public void processarMensalidade() {
         double comissaoCorretor = percentualCorretor;
         double comissaoImobiliaria = percentualImobiliaria;

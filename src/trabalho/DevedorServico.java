@@ -19,7 +19,12 @@ public class DevedorServico {
             devedor.mostraDados();
     }
     
-    public Devedor pegarDevedor(int indice) {
-        return devedores.get(indice);
+    public Devedor pegarDevedor(Devedor devedor) {
+        for (Devedor d: devedores) {
+            if (d.equals(devedor))
+                return d;
+        }
+        
+        return null;
     }
 }

@@ -67,23 +67,29 @@ public abstract class Imovel {
     
     public void incluiParticipacaoPropretario(Proprietario prop, double percentual) {
         for (int i = 0; i < participacoes.length; i++) {
-             if (participacoes[i] == null) {
-                 ParticipacaoProprietario part = new ParticipacaoProprietario(prop, percentual);
-                 participacoes[i] = part;
-                 
-                 return;
-             }
+            if (participacoes[i] == null) {
+               ParticipacaoProprietario part = new ParticipacaoProprietario(prop, percentual);
+               participacoes[i] = part;
+                
+               System.out.println("Participação de proprietário adicionada.");
+               return;
+            }
         }
+        
+        System.out.println("Sem espaço livre para adicionar participação de proprietário.");
     }
     
     public void excluiParticipacaoProprietario(Proprietario prop) {
-        for (int i = 0; i < participacoes.length ; i++) {
+        for (int i = 0; i < participacoes.length; i++) {
              if (participacoes[i] != null && participacoes[i].getProprietario() == prop) {
                  participacoes[i] = null;
                  
+                 System.out.println("Participação de proprietário excluída.");
                  return;
              }
         }
+        
+        System.out.println("Participação de proprietário não encontrada.");
     }
    
     public void listarParticipacaoProprietario() {
@@ -92,13 +98,13 @@ public abstract class Imovel {
     }
     
     public void mostraDados() {
-        System.out.println("Id imovel: " + idImovel);
-        System.out.println("Endereco: " +  endereco);
-        System.out.println("Valor base locacao: " + valorBaseLocacao);
-        System.out.println("Valor base venda: " + valorBaseVenda);
-        System.out.println("Iptu: " + iptu);
-        System.out.println("Participacoes dos proprietarios:");
+        System.out.println("ID do imóvel: " + idImovel);
+        System.out.println("Endereço: " +  endereco);
+        System.out.println("Valor base de locação: " + valorBaseLocacao);
+        System.out.println("Valor base de venda: " + valorBaseVenda);
+        System.out.println("IPTU: " + iptu);
         
+        System.out.println("Participações dos proprietários:");
         listarParticipacaoProprietario();
     }
     
